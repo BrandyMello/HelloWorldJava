@@ -7,7 +7,7 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) {
-        // Work through Arrays and ArrayList
+        // Work through Arrays
 //        int[] numbers = new int[5];
 //        numbers[0] = 1;
 //        numbers[2] = 2;
