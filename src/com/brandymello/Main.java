@@ -98,21 +98,28 @@ public class Main {
 //        //and trim() ensures that extra spaces before and after the input are trimmed from the output
 //        System.out.println("You are " + name);
 
+        final byte monthsInYear = 12;
+        final byte percentDivisor = 100;
+
         Scanner scanner = new Scanner(System.in);
+
         System.out.print("Principal: ");
         int principal = Integer.parseInt(scanner.nextLine().trim());
+
         System.out.print("Annual Interest Rate: ");
-        double rate = (Double.parseDouble(scanner.nextLine().trim()));
-        rate = (rate/100)/12;
+        double annualIntrstRate = (Double.parseDouble(scanner.nextLine().trim()));
+        double rate = (annualIntrstRate/percentDivisor)/monthsInYear;
+
         System.out.print("Period (Years): ");
         byte years = Byte.parseByte(scanner.nextLine().trim());
-        int numOfPayments = years * 12;
+        int numOfPayments = years * monthsInYear;
+
         double ratePow = Math.pow(rate +1, numOfPayments);
-        double topLine = ratePow * rate;
-        double bottomLine = ratePow - 1;
-        double result = principal * (topLine/bottomLine);
-        NumberFormat currency = NumberFormat.getCurrencyInstance();
-        String mortgage = currency.format(result);
+        double topLineOfEquation = ratePow * rate;
+        double bottomLineOfEquation = ratePow - 1;
+        double result = principal * (topLineOfEquation/bottomLineOfEquation);
+
+        String mortgage = NumberFormat.getCurrencyInstance().format(result);
         System.out.print("Mortgage " + mortgage);
 
         //Work through Strings:
