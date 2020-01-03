@@ -1,8 +1,10 @@
 package com.brandymello;
 
 import java.awt.*;
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Main {
 
@@ -77,6 +79,41 @@ public class Main {
 //        System.out.println(randomResult2);
 
         //Formatting Numbers
+//        NumberFormat currency = NumberFormat.getCurrencyInstance();
+//        String result = currency.format(1234567.896);
+
+//        NumberFormat percent = NumberFormat.getPercentInstance();
+//        String result = percent.format(0.1);
+        //refactor with method chaining...
+//        String result = NumberFormat.getPercentInstance().format(0.1);
+//        System.out.println(result);
+
+        //Reading Input from user
+//        Scanner scanner = new Scanner(System.in);
+////        System.out.print("Age: "); //just use print because you do not want a line break after
+////        byte age = scanner.nextByte();
+////        System.out.println("You are " + age);
+//        System.out.print("Name: ");
+//        String name = scanner.nextLine().trim(); // nextLine prints entire line rather than just next token
+//        //and trim() ensures that extra spaces before and after the input are trimmed from the output
+//        System.out.println("You are " + name);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Principal: ");
+        int principal = Integer.parseInt(scanner.nextLine().trim());
+        System.out.print("Annual Interest Rate: ");
+        double rate = (Double.parseDouble(scanner.nextLine().trim()));
+        rate = (rate/100)/12;
+        System.out.print("Period (Years): ");
+        byte years = Byte.parseByte(scanner.nextLine().trim());
+        int numOfPayments = years * 12;
+        double ratePow = Math.pow(rate +1, numOfPayments);
+        double topLine = ratePow * rate;
+        double bottomLine = ratePow - 1;
+        double result = principal * (topLine/bottomLine);
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        String mortgage = currency.format(result);
+        System.out.print("Mortgage " + mortgage);
 
         //Work through Strings:
 
